@@ -29,6 +29,33 @@ The complete design is documented in [specs/](specs), including architecture, AP
 - [specs/api-contracts.md](specs/api-contracts.md)
 - [specs/frontend-spec.md](specs/frontend-spec.md)
 
+## Repository Structure
+
+```
+tokenization/
+├── services/                # Platform microservices
+│   ├── gateway/             # API Gateway (Nginx/Traefik)
+│   ├── wallet/              # BTC custody & Lightning (FastAPI :8001)
+│   ├── tokenization/        # Asset evaluation & token issuance (FastAPI :8002)
+│   ├── marketplace/         # Order book & multisig escrow (FastAPI :8003)
+│   ├── education/           # Treasury & courses (FastAPI :8004)
+│   ├── nostr/               # Social layer & bot (FastAPI :8005)
+│   └── frontend/            # React 18 + TypeScript + Tailwind CSS
+├── infra/                   # Docker, Nginx config, env templates
+├── scripts/                 # Dev utility scripts
+├── tests/                   # Integration & E2E tests (cross-service)
+├── deploy/                  # CI/CD pipelines & deployment manifests
+├── specs/                   # Architecture, API, DB, and frontend specs
+└── strategy/                # Vision, mission, and strategic planning
+```
+
+### Naming Conventions
+
+- **Directories**: lowercase, singular (`wallet`, not `wallets`)
+- **Files**: kebab-case for docs (`api-contracts.md`), snake_case for Python (`trade_matcher.py`)
+- **Branches**: `feat/…`, `fix/…`, `docs/…`, `chore/…`
+- **Commits**: `type(scope): short description`
+
 ## Contribution Guide
 
 This guide is mandatory to maintain quality, traceability, and a consistent workflow.
